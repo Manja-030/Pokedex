@@ -20,8 +20,11 @@ text-color-2: #F38BA0
 body {
   background-color: #EDF6E5;
   color: #4C4C6D;
+  font-family: 'Lato', sans-serif;
+
 }
 
 header {
   background-color: #B5EAEA;
+  font-family: 'Signika', sans-serif;
 }

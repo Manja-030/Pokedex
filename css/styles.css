@@ -1,0 +1,27 @@
+/*CONTENT:
+
+1. Colors
+2. Styles
+
+=========
+1. Colors
+=========
+
+background-color-1: #B5EAEA
+background-color-2: #EDF6E5
+background-color-3: #FFBCBC
+text-color-1: #4C4C6D
+text-color-2: #F38BA0
+
+=========
+2. Styles
+=========*/
+
+body {
+  background-color: #EDF6E5;
+  color: #4C4C6D;
+}
+
+header {
+  background-color: #B5EAEA;
+}

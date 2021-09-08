@@ -1,9 +1,34 @@
-let pokemonList = [
-  {name: "Spritzee", heightCentimeters: 20.3, types: "Fairy", category: "Perfume"},
-  {name: "Gloom", heightCentimeters: 78.7, types: ["Grass", "Poison"], category: "Weed"},
-  {name: "Haunter", heightCentimeters: 160,types: ["Ghost", "Poison"], category: "Gas"},
-  {name: "Charmander", heightCentimeters: 61, types: "Fire", category: "Lizard"}
-  ];
+/* To avoid the mess that comes with global variables
+I wrapped the pokemonList in an IIFE.
+The functions getAll and add within the Iffy
+allow me to access the pokemonList from outside and add pokemons to the array.
+*/
+
+let pokemonRepository = (function() {
+
+  let pokemonList = [
+    {name: "Spritzee", heightCentimeters: 20.3, types: "Fairy", category: "Perfume"},
+    {name: "Gloom", heightCentimeters: 78.7, types: ["Grass", "Poison"], category: "Weed"},
+    {name: "Haunter", heightCentimeters: 160,types: ["Ghost", "Poison"], category: "Gas"},
+    {name: "Charmander", heightCentimeters: 61, types: "Fire", category: "Lizard"}
+    ];
+
+  function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
+
+  function getAll() {
+    return pokemonList;
+  }
+
+  return {
+    add: add,
+    getAll: getAll
+  };
+
+})();
+
+
 
 
 /* To loop through my List of Pokémons I could use a for Loop like this:

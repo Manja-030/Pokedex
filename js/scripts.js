@@ -49,4 +49,5 @@ pokemonRepository.getAll().forEach(function(pokemon){
     document.write(pokemon.name + " (height: " + pokemon.heightCentimeters + "cm)" + big + "<br>");
   } else{
     document.write(pokemon.name + " (height: " + pokemon.heightCentimeters + "cm)" + "<br>");
+  }
 });

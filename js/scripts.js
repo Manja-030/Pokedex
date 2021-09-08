@@ -14,7 +14,9 @@ let pokemonRepository = (function() {
     ];
 
   function add(pokemon) {
+    if (typeof pokemon === "object") {
     pokemonList.push(pokemon);
+    }
   }
 
   function getAll() {

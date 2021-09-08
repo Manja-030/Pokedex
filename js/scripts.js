@@ -22,7 +22,7 @@ But there is a simpler way. Here I use JavaScripts built in function forEach:*/
 pokemonList.forEach(function(pokemon){
   let big = " - Wow, that´s big!";
   if (pokemon.heightCentimeters > 100){
-    document.write(pokemon.name + " (height: " + pokemonList.heightCentimeters + "cm)" + big + "<br>");
+    document.write(pokemon.name + " (height: " + pokemon.heightCentimeters + "cm)" + big + "<br>");
   } else{
-    document.write(pokemon.name + " (height: " + pokemonList.heightCentimeters + "cm)" + "<br>");
+    document.write(pokemon.name + " (height: " + pokemon.heightCentimeters + "cm)" + "<br>");
 });

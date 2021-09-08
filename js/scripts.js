@@ -29,8 +29,6 @@ let pokemonRepository = (function() {
 })();
 
 
-
-
 /* To loop through my List of Pokémons I could use a for Loop like this:
 
 for (let i = 0; i < pokemonList.length; i++){
@@ -41,10 +39,11 @@ for (let i = 0; i < pokemonList.length; i++){
     document.write(pokemonList[i].name + " (height: " + pokemonList[i].heightCentimeters + "cm)" + "<br>");
   }
 }
+But there is a simpler way. Here I use JavaScripts built in function forEach.
+And after I wrapped the pokemonList in an Iffy
+I now need to refer to the getAll function within the Iffy. */
 
-But there is a simpler way. Here I use JavaScripts built in function forEach:*/
-
-pokemonList.forEach(function(pokemon){
+pokemonRepository.getAll().forEach(function(pokemon){
   let big = " - Wow, that´s big!";
   if (pokemon.heightCentimeters > 100){
     document.write(pokemon.name + " (height: " + pokemon.heightCentimeters + "cm)" + big + "<br>");

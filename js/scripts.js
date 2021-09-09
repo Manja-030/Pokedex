@@ -14,7 +14,18 @@ let pokemonRepository = (function() {
     ];
 
   function add(pokemon) {
-    if (typeof pokemon === "object") {
+    /*
+    Before a pokemon can be added to the pokemonList I check if it is
+    - an object
+    - the keys of this pokemon are right and complete
+    */
+    let keys = ["name", "heightCentimeters", "types", "category"];
+
+    let keyCheck = Object.keys(pokemon).every(function(key){
+      return keys.includes(key);
+    });
+
+    if (typeof pokemon === "object" && keyCheck == true && Object.keys(pokemon).length == keys.length) {
     pokemonList.push(pokemon);
     }
   }

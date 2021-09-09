@@ -33,10 +33,17 @@ let pokemonRepository = (function() {
   function getAll() {
     return pokemonList;
   }
+/*This function should allow to find a specific Pokémon by its name.*/
+  function findPokemon(){
+    let userSearchName = prompt("Which Pokémon would you like to see? Enter name: ");
+    let filteredPokemon = pokemonList.filter(function(pokemon) {
+      return pokemon.name == userSearchName;
+  });
 
   return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
+    findPokemon: findPokemon
   };
 
 })();

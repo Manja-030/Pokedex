@@ -34,6 +34,16 @@ let pokemonRepository = (function() {
     return pokemonList;
   }
 
+  function addListItem (pokemon) {
+    let pokemonList = document.querySelector(".pokemon-list");
+    let listItem = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("button-class");
+    listItem.appendChild(button);
+    pokemonList.appendChild(listItem);
+  }
+
 /*This function should allow to find a specific Pokémon by its name.*/
   function findPokemon(){
     let userSearchName = prompt("Which Pokémon would you like to see? Enter name: ");
@@ -45,6 +55,7 @@ let pokemonRepository = (function() {
   return {
     add: add,
     getAll: getAll,
+    addListItem: addListItem,
     findPokemon: findPokemon
   };
 
@@ -67,10 +78,14 @@ I now need to refer to the getAll function within the Iffy. */
 
 
 pokemonRepository.getAll().forEach(function(pokemon){
+  pokemonRepository.addListItem(pokemon);
+/*
+Old code snippet from former task:
   let big = " - Wow, that´s big!";
   if (pokemon.heightCentimeters > 100){
     document.write(pokemon.name + " (height: " + pokemon.heightCentimeters + "cm)" + big + "<br>");
   } else{
     document.write(pokemon.name + " (height: " + pokemon.heightCentimeters + "cm)" + "<br>");
   }
+*/
 });

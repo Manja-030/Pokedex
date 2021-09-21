@@ -4,38 +4,29 @@ The functions getAll and add within the Iffy
 allow me to access the pokemonList from outside and add pokemons to the array.
 */
 
-let pokemonRepository = (function() {
+let pokemonRepository = (function () {
 
-  let pokemonList = [
-    {name: "Spritzee", heightCentimeters: 20.3, types: "Fairy", category: "Perfume"},
-    {name: "Gloom", heightCentimeters: 78.7, types: ["Grass", "Poison"], category: "Weed"},
-    {name: "Haunter", heightCentimeters: 160,types: ["Ghost", "Poison"], category: "Gas"},
-    {name: "Charmander", heightCentimeters: 61, types: "Fire", category: "Lizard"}
-    ];
+  let pokemonList = [];
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1000";
 
   function add(pokemon) {
     /*
     Before a pokemon can be added to the pokemonList I check if it is
     - an object
     - the keys of this pokemon are right and complete
-    */
+    *
     let keys = ["name", "heightCentimeters", "types", "category"];
 
-    let keyCheck = Object.keys(pokemon).every(function(key){
+    let keyCheck = Object.keys(pokemon).every(function (key){
       return keys.includes(key);
     });
 
-    if (typeof pokemon === "object" && keyCheck == true && Object.keys(pokemon).length == keys.length) {
-    return pokemonList.push(pokemon);
-    }
+    if (typeof pokemon === "object" && keyCheck == true && Object.keys(pokemon).length == keys.length) { */
+    pokemonList.push(pokemon);
   }
 
   function getAll() {
     return pokemonList;
-  }
-
-  function showDetails(pokemon) {
-    console.log(pokemon);
   }
 
   function addListItem (pokemon) {
@@ -46,26 +37,66 @@ let pokemonRepository = (function() {
     button.classList.add("button-class");
     listItem.appendChild(button);
     pokemonList.appendChild(listItem);
-    button.addEventListener("click", function() {
+    button.addEventListener("click", function(event) {
       showDetails(pokemon)
     });
   }
 
 
 
-/*This function should allow to find a specific Pokémon by its name.*/
+/*This function should allow to find a specific Pokémon by its name.
   function findPokemon(){
     let userSearchName = prompt("Which Pokémon would you like to see? Enter name: ");
     let filteredPokemon = pokemonList.filter(function(pokemon) {
       return pokemon.name == userSearchName;
     });
   }
+*/
+  function loadList() {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+        console.log(pokemon);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    })
+  }
+
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
+
+  function showDetails(item) {
+    pokemonRepository.loadDetails(item).then(function () {
+      console.log(item);
+    });
+  }
+
 
   return {
     add: add,
     getAll: getAll,
     addListItem: addListItem,
-    findPokemon: findPokemon
+    //findPokemon: findPokemon,
+    loadList: loadList,
+    loadDetails: loadDetails,
+    showDetails: showDetails
   };
 
 })();
@@ -85,9 +116,11 @@ But there is a simpler way. Here I use JavaScripts built in function forEach.
 And after I wrapped the pokemonList in an Iffy
 I now need to refer to the getAll function within the Iffy. */
 
-
-pokemonRepository.getAll().forEach(function(pokemon){
-  pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
+});
 /*
 Old code snippet from former task:
   let big = " - Wow, that´s big!";
@@ -97,4 +130,3 @@ Old code snippet from former task:
     document.write(pokemon.name + " (height: " + pokemon.heightCentimeters + "cm)" + "<br>");
   }
 */
-});

@@ -130,3 +130,50 @@ Old code snippet from former task:
     document.write(pokemon.name + " (height: " + pokemon.heightCentimeters + "cm)" + "<br>");
   }
 */
+function showModal(title, text) {
+  let modalContainer = document.querySelector("#modal-container");
+  modalContainer.classList.add("is-visible");
+  //to clear all existing modal content:
+  modalContainer.innerHTML = "";
+  //to create the modal:
+  let modal = document.createElement("div");
+  modal.classList.add("modal");
+  //to create close button for modal:
+  let closeButtonElement = document.createElement("button");
+  closeButtonElement.classList.add("modal-close");
+  closeButtonElement.innerText = "X";
+  //calls function to hide Modal when button is clicked:
+  closeButtonElement.addEventListener("click", hideModal);
+  //to create modal title:
+  let titleElement = document.createElement("h1");
+  titleElement.innerText = title;
+  //to create modal content:
+  let contentElement = document.createElement("p")
+  contentElement.innerText = text;
+  //to append modal content to modal:
+  modal.appendChild(closeButtonElement);
+  modal.appendChild(titleElement);
+  modal.appendChild(contentElement);
+  //to append modal to modal Container:
+  modalContainer.appendChild(modal);
+  //adds class for CSS styling when visible:
+  modalContainer.classList.add("is-visible");
+}
+
+document.querySelector("#show-modal").addEventListener("click", () => {
+  showModal("Modal title", "This is the Modal content!")
+});
+
+//calling this function hides the modal:
+function hideModal() {
+  let modalContainer = document.querySelector("#modal-container");
+  modalContainer.classList.remove("is-visible");
+}
+
+//to close modal with Esc-key on keyboard:
+window.addEventListener("keydown", (e) => {
+  let modalContainer = document.querySelector("#modal-container");
+  if(e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
+    hideModal();
+  }
+});

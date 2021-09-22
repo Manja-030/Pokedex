@@ -45,7 +45,28 @@ body {
   /*to center the modal:*/
   display: grid;
   text-align: center;
+  /*to make modal invisible*/
+  display: none;
   }
+
+#modal-container.is-visible {
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  bottom:0;
+  width: 100%;
+  height: 100%;
+  background: rgba(237, 246, 229, 0.5);
+  /*to show it above other content:*/
+  z-index: 999;
+  /*to allow scrolling, if the screen is not high enough:*/
+  overflow: auto;
+  /*to center the modal:*/
+  display: grid;
+  text-align: center;
+  display: block;
+}
 
 .modal {
   margin: auto;

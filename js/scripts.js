@@ -154,7 +154,7 @@ function showModal(title, text) {
   modal.appendChild(closeButtonElement);
   modal.appendChild(titleElement);
   modal.appendChild(contentElement);
-  //to append modal to modal Container:
+  //to append modal to modal container:
   modalContainer.appendChild(modal);
   //adds class for CSS styling when visible:
   modalContainer.classList.add("is-visible");
@@ -174,6 +174,15 @@ function hideModal() {
 window.addEventListener("keydown", (e) => {
   let modalContainer = document.querySelector("#modal-container");
   if(e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
+    hideModal();
+  }
+});
+
+//to close modal by clicking somewhere outside of the modal:
+let modalContainer = document.querySelector("#modal-container");
+modalContainer.addEventListener("click", (e) => {
+  let target = e.target;
+  if (target === modalContainer) {
     hideModal();
   }
 });

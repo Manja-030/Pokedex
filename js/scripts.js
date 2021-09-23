@@ -85,9 +85,10 @@ let pokemonRepository = (function () {
     });
   }
 
+  let modalContainer = document.querySelector("#modal-container");
   function showModal(pokemon) {
     console.log(pokemon);
-    let modalContainer = document.querySelector("#modal-container");
+    //let modalContainer = document.querySelector("#modal-container");
     modalContainer.classList.add("is-visible");
     //to clear all existing modal content:
     modalContainer.innerHTML = "";
@@ -139,20 +140,19 @@ let pokemonRepository = (function () {
 
   //calling this function hides the modal:
   function hideModal() {
-    let modalContainer = document.querySelector("#modal-container");
+    //let modalContainer = document.querySelector("#modal-container");
     modalContainer.classList.remove("is-visible");
   }
 
   //to close modal with Esc-key on keyboard:
   window.addEventListener("keydown", (e) => {
-    let modalContainer = document.querySelector("#modal-container");
+    //let modalContainer = document.querySelector("#modal-container");
     if(e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
       hideModal();
     }
   });
 
   //to close modal by clicking somewhere outside of the modal:
-  let modalContainer = document.querySelector("#modal-container");
   modalContainer.addEventListener("click", (e) => {
     let target = e.target;
     if (target === modalContainer) {

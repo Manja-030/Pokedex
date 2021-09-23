@@ -1,7 +1,5 @@
 /* To avoid the mess that comes with global variables
-I wrapped the pokemonList in an IIFE.
-The functions getAll and add within the Iffy
-allow me to access the pokemonList from outside and add pokemons to the array.
+the pokemonList is wrapped in an IIFE.
 */
 
 let pokemonRepository = (function () {
@@ -41,8 +39,6 @@ let pokemonRepository = (function () {
       showDetails(pokemon)
     });
   }
-
-
 
 /*This function should allow to find a specific Pokémon by its name.
   function findPokemon(){
@@ -84,10 +80,72 @@ let pokemonRepository = (function () {
 
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function () {
-      console.log(item);
+      showModal(item);
     });
   }
 
+  function showModal(pokemon) {
+    let modalContainer = document.querySelector("#modal-container");
+    modalContainer.classList.add("is-visible");
+    //to clear all existing modal content:
+    modalContainer.innerHTML = "";
+    //to create the modal:
+    let modal = document.createElement("div");
+    modal.classList.add("modal");
+    //to create close button for modal:
+    let closeButtonElement = document.createElement("button");
+    closeButtonElement.classList.add("modal-close");
+    closeButtonElement.innerText = "X";
+    //calls function to hide Modal when button is clicked:
+    closeButtonElement.addEventListener("click", hideModal);
+    //to create modal title:
+    let titleElement = document.createElement("h1");
+    titleElement.innerText = pokemon.name;
+    //to create modal content:
+    let contentElement = document.createElement("p");
+    let pokeHeight = pokemon.height/10;
+    let pokeWeight = pokemon.weight/10;
+
+    contentElement.innerText = `Height: ${pokeHeight}m
+    Weight: ${pokeWeight}kg`;
+
+    let imageElement = document.createElement("img");
+    imageElement.setAttribute("src", pokemon.imageUrl);
+
+    //to append modal content to modal:
+    modal.appendChild(closeButtonElement);
+    modal.appendChild(titleElement);
+    modal.appendChild(imageElement);
+    modal.appendChild(contentElement);
+    //to append modal to modal container:
+    modalContainer.appendChild(modal);
+
+    //adds class for CSS styling when visible:
+    modalContainer.classList.add("is-visible");
+  }
+
+  //calling this function hides the modal:
+  function hideModal() {
+    let modalContainer = document.querySelector("#modal-container");
+    modalContainer.classList.remove("is-visible");
+  }
+
+  //to close modal with Esc-key on keyboard:
+  window.addEventListener("keydown", (e) => {
+    let modalContainer = document.querySelector("#modal-container");
+    if(e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
+      hideModal();
+    }
+  });
+
+  //to close modal by clicking somewhere outside of the modal:
+  let modalContainer = document.querySelector("#modal-container");
+  modalContainer.addEventListener("click", (e) => {
+    let target = e.target;
+    if (target === modalContainer) {
+      hideModal();
+    }
+  });
 
   return {
     add: add,
@@ -102,87 +160,14 @@ let pokemonRepository = (function () {
 })();
 
 
-/* To loop through my List of Pokémons I could use a for Loop like this:
-
-for (let i = 0; i < pokemonList.length; i++){
-  let big = " - Wow, that´s big!";
-  if (pokemonList[i].heightCentimeters > 100){
-    document.write(pokemonList[i].name + " (height: " + pokemonList[i].heightCentimeters + "cm)" + big + "<br>");
-  } else{
-    document.write(pokemonList[i].name + " (height: " + pokemonList[i].heightCentimeters + "cm)" + "<br>");
-  }
-}
-But there is a simpler way. Here I use JavaScripts built in function forEach.
-And after I wrapped the pokemonList in an Iffy
-I now need to refer to the getAll function within the Iffy. */
-
 pokemonRepository.loadList().then(function () {
   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
 });
-/*
-Old code snippet from former task:
-  let big = " - Wow, that´s big!";
-  if (pokemon.heightCentimeters > 100){
-    document.write(pokemon.name + " (height: " + pokemon.heightCentimeters + "cm)" + big + "<br>");
-  } else{
-    document.write(pokemon.name + " (height: " + pokemon.heightCentimeters + "cm)" + "<br>");
-  }
-*/
-function showModal(title, text) {
-  let modalContainer = document.querySelector("#modal-container");
-  modalContainer.classList.add("is-visible");
-  //to clear all existing modal content:
-  modalContainer.innerHTML = "";
-  //to create the modal:
-  let modal = document.createElement("div");
-  modal.classList.add("modal");
-  //to create close button for modal:
-  let closeButtonElement = document.createElement("button");
-  closeButtonElement.classList.add("modal-close");
-  closeButtonElement.innerText = "X";
-  //calls function to hide Modal when button is clicked:
-  closeButtonElement.addEventListener("click", hideModal);
-  //to create modal title:
-  let titleElement = document.createElement("h1");
-  titleElement.innerText = title;
-  //to create modal content:
-  let contentElement = document.createElement("p")
-  contentElement.innerText = text;
-  //to append modal content to modal:
-  modal.appendChild(closeButtonElement);
-  modal.appendChild(titleElement);
-  modal.appendChild(contentElement);
-  //to append modal to modal container:
-  modalContainer.appendChild(modal);
-  //adds class for CSS styling when visible:
-  modalContainer.classList.add("is-visible");
-}
+
+
 
 document.querySelector("#show-modal").addEventListener("click", () => {
   showModal("Modal title", "This is the Modal content!")
-});
-
-//calling this function hides the modal:
-function hideModal() {
-  let modalContainer = document.querySelector("#modal-container");
-  modalContainer.classList.remove("is-visible");
-}
-
-//to close modal with Esc-key on keyboard:
-window.addEventListener("keydown", (e) => {
-  let modalContainer = document.querySelector("#modal-container");
-  if(e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
-    hideModal();
-  }
-});
-
-//to close modal by clicking somewhere outside of the modal:
-let modalContainer = document.querySelector("#modal-container");
-modalContainer.addEventListener("click", (e) => {
-  let target = e.target;
-  if (target === modalContainer) {
-    hideModal();
-  }
 });

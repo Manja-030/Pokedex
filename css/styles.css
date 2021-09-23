@@ -26,7 +26,32 @@ body {
 .title {
   font-family: 'Signika', sans-serif;
   font-size: 2rem;
-  margin: 10px;
+  text-align: center;
+}
+
+.pokemon-list {
+  list-style-type: none;
+  text-align: center;
+}
+
+.button-class {
+  border: none;
+  background-color: #B5EAEA;
+  color: #4C4C6D;
+  font-family: inherit;
+  text-transform: capitalize;
+  width: 60%;
+  padding: 20px;
+  margin: 4px auto;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  border: 0 0 2px 2px solid #4C4C6D;
+  box-shadow: 2px 2px #4C4C6D;
+  cursor: pointer;
+}
+
+.button-class:hover{
+  opacity: 0.8;
 }
 
 #modal-container {
@@ -65,7 +90,7 @@ body {
   /*to center the modal:*/
   display: grid;
   text-align: center;
-  display: block;
+  display: grid;
 }
 
 .modal {
@@ -76,7 +101,9 @@ body {
   padding: 15px;
   width: 100%;
   max-width: 700px;
-  text-align: left;
+  text-align: center;
+  border-radius: 8px;
+  text-transform: capitalize;
 }
 
 .modal-close {
@@ -99,23 +126,4 @@ body {
 
 .modal p {
   margin-bottom: 0;
-}
-
-.button-class {
-  background-color: #B5EAEA;
-  color: #4C4C6D;
-  font-family: inherit;
-  text-align: center;
-  display: inline-block;
-  width: 30%;
-  padding: 20px;
-  margin: 4px;
-  font-size: 1.2rem;
-  border: 1px solid #4C4C6D;
-  cursor: pointer;
-
-}
-
-ul {
-  list-style: none;
 }

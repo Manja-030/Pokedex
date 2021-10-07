@@ -77,8 +77,16 @@ let pokemonRepository = (function () {
       item.imageUrlFront = details.sprites.front_default;
       item.height = details.height;
       item.weight = details.weight;
-      item.types = details.types;
-      item.abilities = details.abilities;
+      item.types = [];
+      item.abilities = [];
+
+      Object.keys(details.types).forEach(function(property) {
+        item.types.push(details.types[property].type.name);
+      });
+      Object.keys(details.abilities).forEach(function(property) {
+        item.abilities.push(details.abilities[property].ability.name);
+      });
+    console.log(item);
     }).catch(function (e) {
       console.error(e);
     });
@@ -104,22 +112,28 @@ let pokemonRepository = (function () {
 
     let imageElementFront = $("<img class='modal-img float-right' style='width:50%'>");
     imageElementFront.attr("src", item.imageUrlFront);
+    imageElementFront.attr("alt", "picture of " + item.name)
 
     //let imageElementBack = $("img class='modal-img' style='width:50%'>");
     //imageElementBack.attr("src", itemImageUrlBack);
 
+
+
     let heightElement = $("<p>" + "Height: " + item.height/10 + "m" + "</p>");
     let weightElement = $("<p>" + "Weight: " + item.weight/10 + "kg" + "</p>");
-    //let typesElement = $("<p>" + "Types: " + item.types.join(", ") + "</p>");
-    //let abilitiesElement = $("<p>" + "Abilities: " + item.abilities.join(", ") + "</p>");
+    let typesElement = $("<p>" + "Types: " + item.types + "</p>");
+    let abilitiesElement = $("<p>" + "Abilities: " + item.abilities + "</p>");
+
+
+
 
     modalTitle.append(nameElement);
     modalBody.append(imageElementFront);
     //modalBody.append(imageElementBack);
     modalBody.append(heightElement);
     modalBody.append(weightElement);
-    //modalBody.append(typesElement);
-    //modalBody.append(abilitiesElement);
+    modalBody.append(typesElement);
+    modalBody.append(abilitiesElement);
   }
   /*  //let modalContainer = document.querySelector("#modal-container");
     modalContainer.classList.add("is-visible");

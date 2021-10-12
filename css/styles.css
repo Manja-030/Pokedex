@@ -38,7 +38,7 @@ body {
   text-align: center;
 }
 
-.pokemon-button {
+.pokemon-button, #searchBar {
   border: none;
   background-color: #B5EAEA;
   color: #4C4C6D;
@@ -54,6 +54,10 @@ body {
   border-bottom: 2px solid #8ab5b5;
   box-shadow: 2px 2px #8ab5b5;
   cursor: pointer;
+}
+
+#searchBar {
+  background-color: #FFBCBC;
 }
 
 .pokemon-button:hover {

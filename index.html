@@ -13,10 +13,16 @@
 
 <body>
   <h1 class="title">Pokédex</h1>
+
+  <form class="d-flex">
+    <input type="search" class="form-control-sm rounded" id="searchBar" placeholder="Search Pokémon" aria-label="Search"/>
+  </form>
+  <p></p>
+
   <div class="container">
     <ul class="pokemon-list list-group list-unstyled text-center"></ul>
   </div>
-  <!--<div id="modal-container"></div>-->
+
 
   <div class="modal fade" id="pokemonModal" tabindex="-1" role="dialog" aria-labelledby="pokemonModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

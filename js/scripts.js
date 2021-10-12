@@ -45,14 +45,6 @@ let pokemonRepository = (function () {
     });
   }
 
-/*This function should allow to find a specific Pokémon by its name.
-  function findPokemon(){
-    let userSearchName = prompt("Which Pokémon would you like to see? Enter name: ");
-    let filteredPokemon = pokemonList.filter(function(pokemon) {
-      return pokemon.name == userSearchName;
-    });
-  }
-*/
   function loadList() {
     return fetch(apiUrl).then(function (response) {
       return response.json();
@@ -208,6 +200,22 @@ let pokemonRepository = (function () {
 
   });
   */
+
+  let searchPokemon = document.querySelector("#searchBar");
+
+  searchPokemon.addEventListener("input", function() {
+    let listPokemon = document.querySelectorAll("li");
+    let value = searchPokemon.value.toUpperCase();
+
+    listPokemon.forEach(function (pokemon) {
+      if (pokemon.innerText.toUpperCase().indexOf(value) > -1) {
+        pokemon.style.display = "block";
+      } else {
+        pokemon.style.display = "none";
+      }
+    });
+  });
+
 
   return {
     add: add,

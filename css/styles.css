@@ -38,17 +38,12 @@ body {
   text-align: center;
 }
 
-.pokemon-button, #searchBar {
+.list-group-item-mine, #searchBar {
   border: none;
   background-color: #B5EAEA;
-  color: #4C4C6D;
-  font-family: 'Lato', sans-serif;
-  font-size: 1.4rem;
-  text-transform: capitalize;
   width: 60%;
-  padding: 20px;
+  
   margin: 4px auto;
-
   border-radius: 4px;
   border-right: 2px solid #8ab5b5;
   border-bottom: 2px solid #8ab5b5;
@@ -56,11 +51,20 @@ body {
   cursor: pointer;
 }
 
-#searchBar {
-  background-color: #FFBCBC;
+.pokemon-button {
+  color: #4C4C6D;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.4rem;
+  width: 100%;
 }
 
-.pokemon-button:hover {
+#searchBar {
+  background-color: #FFBCBC;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.4rem;
+}
+
+.list-group-item-mine:hover {
   opacity: 0.8;
 }
 /*

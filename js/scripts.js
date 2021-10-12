@@ -30,11 +30,11 @@ let pokemonRepository = (function () {
   function addListItem (pokemon) {
     let pokemonList = document.querySelector(".pokemon-list");
     let listItem = document.createElement("li");
-    listItem.classList.add("group-list-item");
+    listItem.classList.add("list-group-item-mine");
 
     let pokemonButton = document.createElement("button");
     pokemonButton.innerText = pokemon.name;
-    pokemonButton.classList.add("pokemon-button", "btn");
+    pokemonButton.classList.add("pokemon-button", "btn", "text-capitalize");
     pokemonButton.setAttribute("data-target", "#pokemonModal");
     pokemonButton.setAttribute("data-toggle", "modal");
 

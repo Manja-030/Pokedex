@@ -62,8 +62,9 @@ li, #searchBar {
   font-size: 1.4rem;
 }
 
-.list-group-item-mine:hover {
+.list-group-item-mine:hover, #searchBar:hover {
   opacity: 0.8;
+  cursor: pointer;
 }
 /*
 .img {

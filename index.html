@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/e4d7a08c0b.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
@@ -15,15 +16,16 @@
   <h1 class="title">Pokédex</h1>
 
   <form class="d-flex">
-    <input type="search" class="form-control form-control-sm rounded text-center" id="searchBar" placeholder="Search Pokémon" aria-label="Search"/>
-    <button class="btn bg-transparent" style="margin-left: -40px; z-index: 100;">
-      <i class="fa fa-times"></i>
-    </button>
+    <input type="search" class="form-control form-control-sm rounded text-center" id="searchBar" placeholder="&#61442; Search for Pokémon" aria-label="Search"/>
+    <button class="btn bg-transparent" style="margin-left: -40px; z-index: 100;"></button>
   </form>
   <p></p>
 
   <div class="container">
     <ul class="pokemon-list list-group list-unstyled text-center"></ul>
+    <button type="button" class="btn btn-floating btn-lg" id="btn-back-to-top" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
   </div>
 
 

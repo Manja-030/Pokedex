@@ -30,9 +30,8 @@ body {
 .navbar-custom {
   background-color: #4C4C6D !important;
   color: #EDF6E5;
-
-
 }
+
 .title {
   margin-right: 30px;
 }
@@ -45,8 +44,10 @@ body {
 
 li {
   background-color: #B5EAEA;
-  width: 60%;
-  margin: 4px auto;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  /*margin-left: 8px;
+  margin-right: 8px;*/
   border-radius: 4px;
   border-right: 2px solid #8ab5b5;
   border-bottom: 2px solid #8ab5b5;
@@ -63,6 +64,7 @@ li {
 
 .pokemon-button {
   color: #4C4C6D;
+  border: none;
   font-family: 'Lato', sans-serif;
   font-size: 1.4rem;
   width: 100%;

@@ -90,7 +90,7 @@ let pokemonRepository = (function () {
 
     let nameElement = $("<h1>" + item.name + "</h1>");
 
-    let imageElementFront = $("<img class='modal-img float-right' style='width:50%'>");
+    let imageElementFront = $("<img class='modal-img float-right img-fluid'>");
     imageElementFront.attr("src", item.imageUrlFront);
     imageElementFront.attr("alt", "picture of " + item.name)
     let heightElement = $("<p>" + "Height: " + item.height/10 + "m" + "</p>");

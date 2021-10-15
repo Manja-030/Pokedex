@@ -60,7 +60,7 @@ let pokemonRepository = (function () {
     return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {
-      item.imageUrlFront = details.sprites.front_default;
+      item.image = details.sprites.other.dream_world.front_default;
       item.height = details.height;
       item.weight = details.weight;
       item.types = [];
@@ -96,16 +96,16 @@ let pokemonRepository = (function () {
 
     let nameElement = $("<h1>" + item.name + "</h1>");
 
-    let imageElementFront = $("<img class='modal-img float-right img-fluid'>");
-    imageElementFront.attr("src", item.imageUrlFront);
-    imageElementFront.attr("alt", "picture of " + item.name)
+    let imageElement = $("<img class='modal-img float-right img-fluid' style='max-width:200px'>");
+    imageElement.attr("src", item.image);
+    imageElement.attr("alt", "picture of " + item.name)
     let heightElement = $("<p>" + "Height: " + item.height/10 + "m" + "</p>");
     let weightElement = $("<p>" + "Weight: " + item.weight/10 + "kg" + "</p>");
     let typesElement = $("<p>" + "Types: " + item.types + "</p>");
     let abilitiesElement = $("<p>" + "Abilities: " + item.abilities + "</p>");
 
     modalTitle.append(nameElement);
-    modalBody.append(imageElementFront);
+    modalBody.append(imageElement);
     modalBody.append(heightElement);
     modalBody.append(weightElement);
     modalBody.append(typesElement);

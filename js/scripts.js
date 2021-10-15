@@ -7,6 +7,13 @@ let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1000";
 
+  function showLoadingSpinner() {
+    document.querySelector(".loading-message").classList.add("visible");
+  }
+  function hideLoadingSpinner() {
+    document.querySelector(".loading-message").classList.add("hidden");
+  }
+
   function add(pokemon) {
     pokemonList.push(pokemon);
   }
@@ -40,9 +47,11 @@ let pokemonRepository = (function () {
   }
 
   function loadList() {
+    showLoadingSpinner();
     return fetch(apiUrl).then(function (response) {
       return response.json();
     }).then(function (json) {
+      hideLoadingSpinner();
       json.results.forEach(function (item) {
         let pokemon = {
           name: item.name,
@@ -56,10 +65,12 @@ let pokemonRepository = (function () {
   }
 
   function loadDetails(item) {
+    showLoadingSpinner();
     let url = item.detailsUrl;
     return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {
+      hideLoadingSpinner();
       item.image = details.sprites.other.dream_world.front_default;
       item.height = details.height;
       item.weight = details.weight;

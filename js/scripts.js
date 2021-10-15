@@ -24,7 +24,7 @@ let pokemonRepository = (function () {
 
   function addListItem (pokemon) {
     let pokemonList = document.querySelector(".pokemon-list");
-    pokemonList.classList.add("row");
+    pokemonList.classList.add("row", "col-gap");
     let listItem = document.createElement("li");
     listItem.classList.add(
       "list-group-item-mine",

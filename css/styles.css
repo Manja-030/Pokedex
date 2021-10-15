@@ -80,6 +80,10 @@ li {
   box-shadow: none;
 }
 
+.col-gap {
+  column-gap: 0rem;
+}
+
 .modal-content {
   margin: auto;
   display: inline-block;

@@ -18,9 +18,9 @@ text-color-2: #F38BA0
 =========
 2. Styles
 =========*/
-* {
+/** {
   box-sizing: border-box;
-}
+}*/
 
 body {
   background-color: #EDF6E5;

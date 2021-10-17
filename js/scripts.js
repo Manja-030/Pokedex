@@ -7,11 +7,17 @@ let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1000";
 
+  //function showLoadingMessage() {
+  //  document.querySelector(".loading-message").classList.add("visible");
+  //  }
+  //function hideLoadingMessage() {
+  //  document.querySelector(".loading-message").classList.add("hidden");
+//  }
   function showLoadingMessage() {
     document.querySelector(".loading-message").classList.add("visible");
   }
   function hideLoadingMessage() {
-    document.querySelector(".loading-message").classList.add("hidden");
+    document.querySelector(".loading-message").classList.remove("visible");
   }
 
   function add(pokemon) {

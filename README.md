@@ -12,10 +12,10 @@ bootstrap
 USER GOALS
 A digital encyclopedia of pokémons. The user can view a list of pokémons. By clicking on a pokémons name the user can see an image of it and get more information such as height, weight, types and abilities.
 The user can also search pokémons by name.
+The app works in Chrome, Firefox, Safari, Edge, and Internet Explorer 11.
 
-and see informationmore details for a given data item on demand.
-It’s up to you to come up with a type of data you want to display (see this list of public APIs for an
-example); however, if you don’t have any special preferences, you can write a small Pokédex app to
-display a list of Pokémon.
-
-User Goals: A digital encyclopedia, which displays the original 151 Pokemon. Within the pokedex, each pokemon should have basic data such as height, weight, types, abilities and their proper images.
+KEY FEATURES
+Load data from an outside source (API)
+View list of items.
+Search list of items by name.
+On user action (clicking on a list item) view details for that item.

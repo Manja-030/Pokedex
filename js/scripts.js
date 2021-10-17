@@ -1,25 +1,25 @@
-/* eslint-env jquery */
-
+//Create IIFE to wrap pokemonList:
 let pokemonRepository = (function() {
   let pokemonList = [];
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1000';
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1000'; //external API
 
+  //Display/Hide bootstrap loading-spinner
   function showLoadingMessage() {
     document.querySelector('.loading-message').classList.add('visible');
   }
-
   function hideLoadingMessage() {
     document.querySelector('.loading-message').classList.remove('visible');
   }
-
+  //Add pokémons to array:
   function add(pokemon) {
     pokemonList.push(pokemon);
   }
-
+  //Return pokemonList array:
   function getAll() {
     return pokemonList;
   }
-
+  //Create panel of buttons to display names of pokemons.
+  //Add event listener to show pokemon details on click:
   function addListItem(pokemon) {
     let pokemonList = document.querySelector('.pokemon-list');
     pokemonList.classList.add('row', 'col-gap');
@@ -43,7 +43,7 @@ let pokemonRepository = (function() {
       showDetails(pokemon);
     });
   }
-
+  //Fetch pokemon list from API:
   function loadList() {
     showLoadingMessage();
     return fetch(apiUrl)
@@ -65,7 +65,7 @@ let pokemonRepository = (function() {
         console.error(e);
       });
   }
-
+  //Fetch pokémon details form API:
   function loadDetails(item) {
     showLoadingMessage();
     let url = item.detailsUrl;
@@ -78,9 +78,9 @@ let pokemonRepository = (function() {
         item.image = details.sprites.other.dream_world.front_default;
         item.height = details.height;
         item.weight = details.weight;
+        //Get array of all pokémon types and abilities.
         item.types = [];
         item.abilities = [];
-
         Object.keys(details.types).forEach(function(property) {
           item.types.push(details.types[property].type.name);
         });
@@ -93,13 +93,13 @@ let pokemonRepository = (function() {
         console.error(e);
       });
   }
-
+  //Display pokémon details in modal:
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function() {
       showModal(item);
     });
   }
-
+  //Define content of bootstrap modal
   function showModal(item) {
     let modalBody = $('.modal-body');
     let modalTitle = $('.modal-title');

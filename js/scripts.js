@@ -1,18 +1,9 @@
-/* To avoid the mess that comes with global variables
-the pokemonList is wrapped in an IIFE.
-*/
-
 let pokemonRepository = (function () {
 
   let pokemonList = [];
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1000";
 
-  //function showLoadingMessage() {
-  //  document.querySelector(".loading-message").classList.add("visible");
-  //  }
-  //function hideLoadingMessage() {
-  //  document.querySelector(".loading-message").classList.add("hidden");
-//  }
+
   function showLoadingMessage() {
     document.querySelector(".loading-message").classList.add("visible");
   }

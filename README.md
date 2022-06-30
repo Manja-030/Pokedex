@@ -1,6 +1,6 @@
 # Pokedex
 
-My first JavaScript App: A digital encyclopedia of pokémons. It loads data from an external[Pokémon API](https://pokeapi.co/). The app displays a list of Pokémons. If the user clicks on one of the Pokémons, a modal opens and displays an image and some imformation. Its also possible to search for a specific Pokémon by name.
+My first JavaScript App: A digital encyclopedia of pokémons. It loads data from an external [Pokémon API](https://pokeapi.co/). The app displays a list of Pokémons. If the user clicks on one of the Pokémons, a modal opens and displays an image and some imformation. Its also possible to search for a specific Pokémon by name.
 
 https://user-images.githubusercontent.com/80778632/176794286-3d6a2b34-3d52-4e18-b1a9-56556b70db1f.mov
 

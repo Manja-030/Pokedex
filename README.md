@@ -26,4 +26,4 @@ git clone https://github.com/Manja-030/Pokedex.git
 ```
 # Demo
 
-[Pokedex] (https://manja-030.github.io/Pokedex/)
+[Pokedex](https://manja-030.github.io/Pokedex/)
